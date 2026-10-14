@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Project, Video } from '../content/projects';
-import { photosFor, thumb, youtubeThumb } from '../content/data';
+import { photosFor, thumb, youtubeThumb, asset } from '../content/data';
 import { go } from '../router';
 import { Sheet } from './Sheet';
 
@@ -9,7 +9,7 @@ function VideoBlock({ v }: { v: Video }) {
   if (v.kind === 'file') {
     return (
       <figure className="video">
-        <video src={v.src} poster={v.poster} controls playsInline preload="metadata" />
+        <video src={asset(v.src)} poster={v.poster && asset(v.poster)} controls playsInline preload="metadata" />
         {v.title && <figcaption>{v.title}</figcaption>}
       </figure>
     );
@@ -83,7 +83,7 @@ export function ProjectSheet({ p }: { p: Project }) {
       {p.clips?.length ? (
         <section className="clips">
           {p.clips.map((src) => (
-            <video key={src} src={src} muted loop autoPlay playsInline />
+            <video key={src} src={asset(src)} poster={asset(src.replace(/\.mp4$/, '.jpg'))} muted loop autoPlay playsInline preload="none" />
           ))}
         </section>
       ) : null}

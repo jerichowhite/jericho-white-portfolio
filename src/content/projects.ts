@@ -136,8 +136,9 @@ export const projects: Project[] = [
     title: 'Mystery in My Bones',
     type: 'Concert teaser',
     role: 'Videography and edit',
-    summary: 'Teaser for an upcoming concert film. Full film coming soon.',
-    videos: [{ kind: 'file', src: '/work/mystery/teaser.mp4', poster: '/work/mystery/poster.jpg', title: 'Mystery in My Bones — teaser' }],
+    summary: 'Teaser for an upcoming concert film. The teaser lands here as soon as it’s released.',
+    // When the teaser is ready, add it like this (file goes in public/work/mystery/):
+    // videos: [{ kind: 'file', src: '/work/mystery/teaser.mp4', poster: '/work/mystery/poster.jpg', title: 'Mystery in My Bones — teaser' }],
     credits: [
       { name: jericho, role: 'Videography, edit' },
       { name: 'Mark White', role: 'Video editor, creative direction' },
@@ -149,14 +150,16 @@ export const projects: Project[] = [
     title: 'Behind the scenes',
     type: 'On set',
     role: 'Setting up, shooting, wrangling',
-    summary: 'Phone snaps and clips from our shoots: lighting setups, tethering, wardrobe changes and the crew in between takes.',
+    summary: 'Phone snaps and clips from our shoots: setting up, directing, checking frames and the crew in between takes.',
+    clips: ['img_3118', 'img_3102', 'img_3085', 'img_3109', 'img_3110'].map((n) => `/work/bts/clips/${n}.mp4`),
   },
   {
     slug: 'design',
     title: 'Graphic design',
     type: 'Posters and artwork',
     role: 'Design',
-    summary: 'Posters, covers and visual identity work made alongside the photo and film projects.',
+    summary: 'Posters and cover art built from my own photographs: cut-outs, hand-drawn type and texture.',
+    cover: '3exex.jpg',
   },
 ];
 

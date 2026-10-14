@@ -13,8 +13,11 @@ export function photosFor(p: Project): Img[] {
   return [...first, ...list.filter((i) => !p.featured!.includes(i.file))];
 }
 
-export const full = (slug: string, file: string) => `/work/${slug}/${file}`;
-export const thumb = (slug: string, file: string) => `/work/${slug}/thumb/${file}`;
+const BASE = import.meta.env.BASE_URL;
+/** Turns '/work/…' paths into ones that work wherever the site is hosted. */
+export const asset = (path: string) => (path.startsWith('/') ? BASE + path.slice(1) : path);
+export const full = (slug: string, file: string) => `${BASE}work/${slug}/${file}`;
+export const thumb = (slug: string, file: string) => `${BASE}work/${slug}/thumb/${file}`;
 
 export const youtubeThumb = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 

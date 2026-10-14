@@ -6,9 +6,9 @@ export function Sheet({ label, wide, children }: { label: string; wide?: boolean
   const ref = useRef<HTMLElement>(null);
   useEffect(() => {
     const prev = document.activeElement as HTMLElement | null;
-    ref.current?.focus();
+    ref.current?.focus({ preventScroll: true });
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') go({ view: 'desk' });
+      if (e.key === 'Escape' && !document.querySelector('.lightbox')) go({ view: 'desk' });
     };
     window.addEventListener('keydown', onKey);
     document.body.classList.add('has-sheet');
